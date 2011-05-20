@@ -91,8 +91,8 @@ class VimeoSimple
 	 * Make the call
 	 *
 	 * @return	string
-	 * @param	string $url
-	 * @param	array[optional] $parameters
+	 * @param	string $url						The URL to call.
+	 * @param	array[optional] $parameters		The parameters to pass.
 	 */
 	private function doCall($url, array $parameters = null)
 	{
@@ -109,11 +109,11 @@ class VimeoSimple
 			$queryString = http_build_query($parameters);
 
 			// append to url
-			$url .= '?'. $queryString;
+			$url .= '?' . $queryString;
 		}
 
 		// prepend
-		$url = self::API_URL .'/'. $url;
+		$url = self::API_URL . '/' . $url;
 
 		// set options
 		$options[CURLOPT_URL] = $url;
@@ -157,7 +157,7 @@ class VimeoSimple
 			}
 
 			// throw error
-			throw new VimeoSimpleException('Invalid headers ('. $headers['http_code'] .')', (int) $headers['http_code']);
+			throw new VimeoSimpleException('Invalid headers (' . $headers['http_code'] . ')', (int) $headers['http_code']);
 		}
 
 		// error?
@@ -193,7 +193,7 @@ class VimeoSimple
 	 */
 	public function getUserAgent()
 	{
-		return (string) 'PHP VimeoSimple/'. self::VERSION .' '. $this->userAgent;
+		return (string) 'PHP VimeoSimple/' . self::VERSION . ' ' . $this->userAgent;
 	}
 
 
@@ -202,7 +202,7 @@ class VimeoSimple
 	 * After this time the request will stop. You should handle any errors triggered by this.
 	 *
 	 * @return	void
-	 * @param	int $seconds	The timeout in seconds
+	 * @param	int $seconds	The timeout in seconds.
 	 */
 	public function setTimeOut($seconds)
 	{
@@ -215,7 +215,7 @@ class VimeoSimple
 	 * It will be appended to ours, the result will look like: "PHP VimeoSimple/<version> <your-user-agent>"
 	 *
 	 * @return	void
-	 * @param	string $userAgent	Your user-agent, it should look like <app-name>/<app-version>
+	 * @param	string $userAgent	Your user-agent, it should look like <app-name>/<app-version>.
 	 */
 	public function setUserAgent($userAgent)
 	{
@@ -233,7 +233,7 @@ class VimeoSimple
 	public function getUserInfo($username)
 	{
 		// make the call
-		return $this->doCall((string) $username .'/info.json');
+		return $this->doCall((string) $username . '/info.json');
 	}
 
 
@@ -251,7 +251,7 @@ class VimeoSimple
 		if($page !== null) $parameters['page'] = (int) $page;
 
 		// make the call
-		return $this->doCall((string) $username .'/videos.json', $parameters);
+		return $this->doCall((string) $username . '/videos.json', $parameters);
 	}
 
 
@@ -269,7 +269,7 @@ class VimeoSimple
 		if($page !== null) $parameters['page'] = (int) $page;
 
 		// make the call
-		return $this->doCall((string) $username .'/likes.json', $parameters);
+		return $this->doCall((string) $username . '/likes.json', $parameters);
 	}
 
 
@@ -287,7 +287,7 @@ class VimeoSimple
 		if($page !== null) $parameters['page'] = (int) $page;
 
 		// make the call
-		return $this->doCall((string) $username .'/appears_in.json', $parameters);
+		return $this->doCall((string) $username . '/appears_in.json', $parameters);
 	}
 
 
@@ -305,7 +305,7 @@ class VimeoSimple
 		if($page !== null) $parameters['page'] = (int) $page;
 
 		// make the call
-		return $this->doCall((string) $username .'/all_videos.json', $parameters);
+		return $this->doCall((string) $username . '/all_videos.json', $parameters);
 	}
 
 
@@ -323,7 +323,7 @@ class VimeoSimple
 		if($page !== null) $parameters['page'] = (int) $page;
 
 		// make the call
-		return $this->doCall((string) $username .'/subscriptions.json', $parameters);
+		return $this->doCall((string) $username . '/subscriptions.json', $parameters);
 	}
 
 
@@ -341,7 +341,7 @@ class VimeoSimple
 		if($page !== null) $parameters['page'] = (int) $page;
 
 		// make the call
-		return $this->doCall((string) $username .'/albums.json', $parameters);
+		return $this->doCall((string) $username . '/albums.json', $parameters);
 	}
 
 
@@ -359,7 +359,7 @@ class VimeoSimple
 		if($page !== null) $parameters['page'] = (int) $page;
 
 		// make the call
-		return $this->doCall((string) $username .'/channels.json', $parameters);
+		return $this->doCall((string) $username . '/channels.json', $parameters);
 	}
 
 
@@ -377,7 +377,7 @@ class VimeoSimple
 		if($page !== null) $parameters['page'] = (int) $page;
 
 		// make the call
-		return $this->doCall((string) $username .'/groups.json', $parameters);
+		return $this->doCall((string) $username . '/groups.json', $parameters);
 	}
 
 
@@ -395,7 +395,7 @@ class VimeoSimple
 		if($page !== null) $parameters['page'] = (int) $page;
 
 		// make the call
-		return $this->doCall((string) $username .'/contacts_videos.json', $parameters);
+		return $this->doCall((string) $username . '/contacts_videos.json', $parameters);
 	}
 
 
@@ -413,7 +413,7 @@ class VimeoSimple
 		if($page !== null) $parameters['page'] = (int) $page;
 
 		// make the call
-		return $this->doCall((string) $username .'/contacts_like.json', $parameters);
+		return $this->doCall((string) $username . '/contacts_like.json', $parameters);
 	}
 
 
@@ -427,7 +427,7 @@ class VimeoSimple
 	public function getVideoInfo($id)
 	{
 		// make the call
-		return $this->doCall('video/'. (string) $id .'.json');
+		return $this->doCall('video/' . (string) $id . '.json');
 	}
 
 
@@ -446,7 +446,7 @@ class VimeoSimple
 		if($page !== null) $parameters['page'] = (int) $page;
 
 		// make the call
-		return $this->doCall('activity/'. (string) $username .'/user_did.json', $parameters);
+		return $this->doCall('activity/' . (string) $username . '/user_did.json', $parameters);
 	}
 
 
@@ -464,7 +464,7 @@ class VimeoSimple
 		if($page !== null) $parameters['page'] = (int) $page;
 
 		// make the call
-		return $this->doCall('activity/'. (string) $username .'/happened_to_user.json', $parameters);
+		return $this->doCall('activity/' . (string) $username . '/happened_to_user.json', $parameters);
 	}
 
 
@@ -482,7 +482,7 @@ class VimeoSimple
 		if($page !== null) $parameters['page'] = (int) $page;
 
 		// make the call
-		return $this->doCall('activity/'. (string) $username .'/contacts_did.json', $parameters);
+		return $this->doCall('activity/' . (string) $username . '/contacts_did.json', $parameters);
 	}
 
 
@@ -500,7 +500,7 @@ class VimeoSimple
 		if($page !== null) $parameters['page'] = (int) $page;
 
 		// make the call
-		return $this->doCall('activity/'. (string) $username .'/happened_to_contacts.json', $parameters);
+		return $this->doCall('activity/' . (string) $username . '/happened_to_contacts.json', $parameters);
 	}
 
 
@@ -518,7 +518,7 @@ class VimeoSimple
 		if($page !== null) $parameters['page'] = (int) $page;
 
 		// make the call
-		return $this->doCall('activity/'. (string) $username .'/everyone_did.json', $parameters);
+		return $this->doCall('activity/' . (string) $username . '/everyone_did.json', $parameters);
 	}
 
 
@@ -532,7 +532,7 @@ class VimeoSimple
 	public function getGroupInfo($groupname)
 	{
 		// make the call
-		return $this->doCall('group/'. (string) $groupname .'/info.json');
+		return $this->doCall('group/' . (string) $groupname . '/info.json');
 	}
 
 
@@ -550,7 +550,7 @@ class VimeoSimple
 		if($page !== null) $parameters['page'] = (int) $page;
 
 		// make the call
-		return $this->doCall('group/'. (string) $groupname .'/users.json', $parameters);
+		return $this->doCall('group/' . (string) $groupname . '/users.json', $parameters);
 	}
 
 
@@ -568,9 +568,8 @@ class VimeoSimple
 		if($page !== null) $parameters['page'] = (int) $page;
 
 		// make the call
-		return $this->doCall('group/'. (string) $groupname .'/videos.json', $parameters);
+		return $this->doCall('group/' . (string) $groupname . '/videos.json', $parameters);
 	}
-
 
 
 // channel requests
@@ -578,12 +577,12 @@ class VimeoSimple
 	 * Get channel info for the specified channel
 	 *
 	 * @return	array
-	 * @param	string $channel	Either the shortcut URL of the channel.
+	 * @param	string $channelname		Either the shortcut URL of the channel.
 	 */
 	public function getChannelInfo($channelname)
 	{
 		// make the call
-		return $this->doCall('channel/'. (string) $channelname .'/info.json');
+		return $this->doCall('channel/' . (string) $channelname . '/info.json');
 	}
 
 
@@ -591,7 +590,7 @@ class VimeoSimple
 	 * Get videos in the channel
 	 *
 	 * @return	array
-	 * @param	string $channel			Either the shortcut URL of the channel.
+	 * @param	string $channelname		Either the shortcut URL of the channel.
 	 * @param	int[optional] $page		The page to retrieve.
 	 */
 	public function getChannelVideos($channelname, $page = null)
@@ -601,9 +600,8 @@ class VimeoSimple
 		if($page !== null) $parameters['page'] = (int) $page;
 
 		// make the call
-		return $this->doCall('channel/'. (string) $channelname .'/videos.json', $parameters);
+		return $this->doCall('channel/' . (string) $channelname . '/videos.json', $parameters);
 	}
-
 
 
 // album requests
@@ -616,7 +614,7 @@ class VimeoSimple
 	public function getAlbumInfo($albumId)
 	{
 		// make the call
-		return $this->doCall('album/'. (string) $albumId .'/info.json');
+		return $this->doCall('album/' . (string) $albumId . '/info.json');
 	}
 
 
@@ -634,7 +632,7 @@ class VimeoSimple
 		if($page !== null) $parameters['page'] = (int) $page;
 
 		// make the call
-		return $this->doCall('album/'. (string) $albumId .'/videos.json', $parameters);
+		return $this->doCall('album/' . (string) $albumId . '/videos.json', $parameters);
 	}
 }
 
