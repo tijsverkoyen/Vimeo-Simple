@@ -9,7 +9,7 @@
  * If you report a bug, make sure you give me enough information (include your code).
  *
  * License
- * Copyright (c) 2010, Tijs Verkoyen. All rights reserved.
+ * Copyright (c), Tijs Verkoyen. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
  *
@@ -22,7 +22,7 @@
  * @author			Tijs Verkoyen <php-vimeo-simple@verkoyen.eu>
  * @version			1.0.0
  *
- * @copyright		Copyright (c) 2010, Tijs Verkoyen. All rights reserved.
+ * @copyright		Copyright (c), Tijs Verkoyen. All rights reserved.
  * @license			BSD License
  */
 class VimeoSimple
@@ -30,10 +30,10 @@ class VimeoSimple
 	// internal constant to enable/disable debugging
 	const DEBUG = false;
 
-	// url for the bitly-api
+	// url for the vimeo-api
 	const API_URL = 'http://vimeo.com/api/v2';
 
-	// port for the bitly-API
+	// port for the vimeo-API
 	const API_PORT = 80;
 
 	// current version
